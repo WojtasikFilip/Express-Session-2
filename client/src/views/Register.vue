@@ -57,7 +57,7 @@ export default {
   },
   methods: {
     async register() {
-      await axios({
+      const data = await axios({
         url: 'http:127.0.0.1:3000/register',
         method: 'POST',
         data: {
@@ -66,6 +66,10 @@ export default {
           password: this.password,
         },
       });
+      this.$router.push('/login');
+      if (data.status == 200) {
+        this.$router.push('/login');
+      }
     },
   },
 };

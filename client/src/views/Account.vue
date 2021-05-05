@@ -31,7 +31,7 @@
 </template>
 
 <script>
-// import axios from 'axios';
+import axios from 'axios';
 export default {
   data() {
     return {
@@ -44,6 +44,13 @@ export default {
   },
   async created() {
     // enter your code here
+    let {data} = await axios({
+      url: 'http:127.0.0.1:3000/secretdata',
+      method: 'GET',
+    });
+    console.log(data);
+    this.prime = data.prime;
+
   },
 };
 </script>

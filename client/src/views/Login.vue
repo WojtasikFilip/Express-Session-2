@@ -22,7 +22,7 @@
           />
         </div>
         <div class="col-2">
-          <button class="btn btn-primary">Login</button>
+          <button class="btn btn-primary" @click="login()">Login</button>
         </div>
       </div>
     </form>
@@ -49,6 +49,7 @@ export default {
       let { data } = await axios({
         url: 'http://127.0.0.1:3000/login',
         method: 'POST',
+        contentType: 'application/json',  
         data: {
           email: this.email,
           password: this.password,
@@ -58,7 +59,7 @@ export default {
         'session',
         JSON.stringify({ id: data.id, name: data.name })
       );
-      this.$router.push('/');
+      this.$router.push('/login');
     },
   },
 };
