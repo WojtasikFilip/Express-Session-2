@@ -8,6 +8,8 @@ const redirectLogin = (req, res, next) => {
 };
 
 router.post('/login', (req, res) => {
+  let email = req.body.email;
+  let password = req.body.password;
   if (email && password) {
     const user = users.find(
       (el) => el.email === email && el.password === password
@@ -31,7 +33,7 @@ router.post('/register', (req, res) => {
   let password = req.body.password;
   let name = req.body.name;
 
-  if (name != '' && password != '' && email != '') {
+  if (name && password && email) {
     if (users.find((el) => el.email == email)) {
       res.status(409).send('Email already registered');
     } else {
@@ -42,9 +44,9 @@ router.post('/register', (req, res) => {
         }
       }
       let newID = erhöhen + 1;
-
+      req.session.userId = newID;
       users.push({ id: newID, name: name, email: email, password: password });
-      res.status(200).send('user created');
+      res.status(200).json({ id: newID, name: name });
     }
   } else {
     res.status(400).send('Registration failed');
@@ -52,7 +54,7 @@ router.post('/register', (req, res) => {
   console.log(users);
 });
 
-router.get('/secretdata',redirectLogin, (req, res) => {
+router.get('/secretdata', redirectLogin, (req, res) => {
   // enter your code here
   return res.status(200).end('the prime number is 2305843009213693951');
 });

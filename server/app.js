@@ -42,7 +42,6 @@ app.use(
   })
 );
 
-app.use(session);
 
 app.use('/', routes);
 

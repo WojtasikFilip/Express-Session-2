@@ -46,8 +46,9 @@ export default {
   methods: {
     async login() {
       // enter your code here
+      console.log('Affe');
       let { data } = await axios({
-        url: 'http://127.0.0.1:3000/login',
+        url: '/login',
         method: 'POST',
         contentType: 'application/json',  
         data: {
@@ -57,9 +58,9 @@ export default {
       });
       localStorage.setItem(
         'session',
-        JSON.stringify({ id: data.id, name: data.name })
+        JSON.stringify(data)
       );
-      this.$router.push('/login');
+     this.$router.push('/');
     },
   },
 };

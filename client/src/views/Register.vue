@@ -57,8 +57,8 @@ export default {
   },
   methods: {
     async register() {
-      const data = await axios({
-        url: 'http:127.0.0.1:3000/register',
+      const {data} = await axios({
+        url: '/register',
         method: 'POST',
         data: {
           email: this.email,
@@ -66,10 +66,8 @@ export default {
           password: this.password,
         },
       });
-      this.$router.push('/login');
-      if (data.status == 200) {
-        this.$router.push('/login');
-      }
+      localStorage.setItem('session', JSON.stringify(data));
+      this.$router.push('/');
     },
   },
 };

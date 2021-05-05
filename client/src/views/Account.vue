@@ -44,13 +44,14 @@ export default {
   },
   async created() {
     // enter your code here
-    let {data} = await axios({
-      url: 'http:127.0.0.1:3000/secretdata',
+    let { data } = await axios({
+      url: '/secretdata',
       method: 'GET',
     });
-    console.log(data);
     this.prime = data.prime;
-
+    let get = JSON.parse(localStorage.getItem('session'));
+    this.user.id = get.id;
+    this.user.name = get.name;
   },
 };
 </script>
