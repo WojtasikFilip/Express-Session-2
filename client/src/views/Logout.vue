@@ -2,7 +2,8 @@
   <div class="container">
     <div class="d-flex flex-column justify-content-center">
       <div class="mx-auto">
-        <router-link to="/">Home</router-link> | <router-link to="/login">Login</router-link>
+        <router-link to="/">Home</router-link> |
+        <router-link to="/login">Login</router-link>
       </div>
       <h5 class="text-center my-3 text-danger">
         Your are logged out!
@@ -13,9 +14,16 @@
 </template>
 
 <script>
+import axios from 'axios';
 export default {
   async created() {
     // enter your code here
+    let {data} = await axios({
+      url:'http://127.0.0.1:3000/logout',
+      method:'GET',
+    });
+    localStorage.clear();
+    console.log(data);
   },
 };
 </script>
