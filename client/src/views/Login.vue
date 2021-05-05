@@ -32,6 +32,15 @@ export default {
   methods: {
     async login() {
       // enter your code here
+      let {data} = await axios({
+        url: 'http://127.0.0.1:3000/login',
+        method: 'POST',
+        data: {
+          email: this.email,
+          password: this.password,
+        },
+      });
+      localStorage.setItem('session', JSON.stringify({id: data.id, name: data.name}))
     },
   },
 };
