@@ -1,9 +1,9 @@
 <template>
   <div id="app">
-    <router-view/>
+    <router-view />
   </div>
 </template>
 //aaa
 <style>
-  @import url('/css/bootstrap.min.css');
+@import url('/css/bootstrap.min.css');
 </style>

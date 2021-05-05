@@ -42,7 +42,6 @@ app.use(
   })
 );
 
-
 app.use('/', routes);
 
 app.use(errorHandler);

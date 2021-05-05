@@ -48,7 +48,7 @@ export default {
       url: '/secretdata',
       method: 'GET',
     });
-    this.prime = data.prime;
+    this.prime = data;
     let get = JSON.parse(localStorage.getItem('session'));
     this.user.id = get.id;
     this.user.name = get.name;

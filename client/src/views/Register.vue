@@ -57,7 +57,7 @@ export default {
   },
   methods: {
     async register() {
-      const {data} = await axios({
+      const { data } = await axios({
         url: '/register',
         method: 'POST',
         data: {

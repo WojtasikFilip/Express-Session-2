@@ -46,21 +46,17 @@ export default {
   methods: {
     async login() {
       // enter your code here
-      console.log('Affe');
       let { data } = await axios({
         url: '/login',
         method: 'POST',
-        contentType: 'application/json',  
+        contentType: 'application/json',
         data: {
           email: this.email,
           password: this.password,
         },
       });
-      localStorage.setItem(
-        'session',
-        JSON.stringify(data)
-      );
-     this.$router.push('/');
+      localStorage.setItem('session', JSON.stringify(data));
+      this.$router.push('/');
     },
   },
 };
