@@ -56,6 +56,9 @@ export default {
   },
   created() {
     // enter your code here
+    let get = JSON.parse(localStorage.getItem('session'));
+    this.user.id = get.id;
+    this.user.name = get.name;
   },
 };
 </script>
